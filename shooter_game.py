@@ -67,11 +67,11 @@ class GameSprite(sprite.Sprite):
 
 # meToa, oTpucosbieaiouni repon Ha oKHe
 
-def reset(self):
-# Pucyem KapTWHHKY O6beKTa Ha 3kpahe B TeX KOOpAMHaTax, rae ceiiuac HaxOAMTCA ero paMKa
-    window.blit(self.image, (self.rect.x, self.rect.y))
+    def reset(self):
+    # Pucyem KapTWHHKY O6beKTa Ha 3kpahe B TeX KOOpAMHaTax, rae ceiiuac HaxOAMTCA ero paMKa
+        window.blit(self.image, (self.rect.x, self.rect.y))
 
-# Knacc rnasHoro urpoKa (Haw Kopa6nb), oH 6epeT Bce ceoiicTea ma GameSprite
+    # Knacc rnasHoro urpoKa (Haw Kopa6nb), oH 6epeT Bce ceoiicTea ma GameSprite
 class Player(GameSprite):
 # MeTOR ANA ynpaBneHuA Kopabnem cTpenkamu KnaBuaTypbl
     def update(self):
@@ -84,12 +84,12 @@ class Player(GameSprite):
             self.rect.x += self.speed # JIsuraem kopa6nb snpaso (ysennuneaem X)
 
 # meTog “Bbictpen” (co3gaem nyn B TOM MecTe, rge cejuac HaxonwMTCH urpoK)
-def fire(self):
-# Co3naeM nynW: no UeHTpy Hauero Kopa6nA, Ha ypoBHe ero Bepxywku. CKOpocTb oTpwuaTenbHan，JuTo6bl neTenaBBepXx.
-    bullet = Bullet(img_bullet, self.rect.centerx, self.rect.top, 15, 20, -15)
-    bullets.add(bullet) # Jo6asnaem nynw Be o6uy rpynny nynmb
+    def fire(self):
+    # Co3naeM nynW: no UeHTpy Hauero Kopa6nA, Ha ypoBHe ero Bepxywku. CKOpocTb oTpwuaTenbHan，JuTo6bl neTenaBBepXx.
+        bullet = Bullet(img_bullet, self.rect.centerx, self.rect.top, 15, 20, -15)
+        bullets.add(bullet) # Jo6asnaem nynw Be o6uy rpynny nynmb
 
-# Knacc Bpara (HO), Toxe 6epeT ceolictea wa GameSprite
+    # Knacc Bpara (HO), Toxe 6epeT ceolictea wa GameSprite
 class Enemy(GameSprite):
 # 中BWKeHwe Bpara
     def update(self):
@@ -97,104 +97,10 @@ class Enemy(GameSprite):
         global lost # YkasbiBaem, uTO 6ynew U3MeHAT rno6anbHy nepemenHyw lost (nponyweHHbIe)
 # Mcde3aaeT，ecnm
         if self.rect.y > win_height:
-            self.rext.x = randint(80,win_height - 80)
+            self.rect.x = randint(80,win_height - 80)
             self.rect.y = 0
             lost = lost + 1
 
-# # npoBepka cTonKHoBeHMit nynb c MoHcTpaMw
-# # (True, True oshauaeT，uTo npw KacaHww ymanuTcA W MOHCTp, Mw nyna)
-# collides = sprite.groupcollide(monsters, bullets, True, True)
-# for c in collides:
-# # 3TOT KOM cpa6aTblBaeT ANA Kaxgoro cO6uToro MOHCTpa
-# score = score + 1 # Jlaem urpoky 1 ouko
-# # Coanaem HoBoro MOHCTpa Ha CaMOM Bepxy，JdTo6b ux Bcerna 6bmo 5 uTyKk
-# monster = Enemy(img_enemy, randint(80, win_width - 80), -40, 80, 50, randint(1, 5))
-# monsters.add(monster)
-
-# # (3akommentuposanult cTapbii KyCoK Kona, KOTOpEIli paHbue oTeedan 3a MrHOBeHHE npour ps)
-# if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False) or lost >= max_lost:
-# finish = True # npourpanu, cTaBum don u 6onbHe He ynpaennew cnpaiitamn.
-# window.blit(lose, (200, 200))
-
-# # nposepaem, spezanca mm Haw kopa6nb Bo Bpara wnwm acTepown
-# if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False):
-# # Ecnm spezanca, ymanaem Toro MoHcTpa (True B KoHUe)
-# sprite.spritecollide(ship, monsters, True)
-# # Yoanaem TOT acTepoua, B KOTOpbIA BpeZanucb
-# sprite.spritecollide(ship, asteroids, True)
-# life = life -1 # OTHwmaem onHy xn3Hb y Hauero Kopa6na
-
-# # nposepaem ycnogna MPOMFPBILIA
-
-# if life == 0 or lost >= max_lost: # Ecaw 3akoHumnucb xu3HH WI nponycTwunw cnmukow mhoro
-# finish = True # OcTahaenmeaeM urpy (3anpeuaeM newnraTbcH)
-# window.blit(lose, (200, 200)) # Pucyem Hannwmcb YOU LOSE no ueHTpy
-
-# # nposepaem ycnoewe BBIMTPBILIA
-# if score >= goal: # Ecnw Ha6pann HyxHbie ouKn (20)
-# finish = True # OcTaHasnueaem urpy
-# window.blit(win, (200, 200)) # Pucyem Hagnucb YOU WIN no ueHTpy
-
-# # nonroToBKa TekcTa Ana cueTa Ha 3kpaHe
-# text = font2.render("Cuet: "+ str(score), 1, (255, 255, 255))
-# window.blit(text, (10, 20)) # Pucyem cueT B neBoM BepxHem yray
-
-# # nonroToBKa TekcTa ANA nponyuleHHbix Kopabned Ha SKpaHe
-# text_lose = font2.render("Mponyuevo: " + str(lost), 1, (255, 255, 255))
-# window.blit(text_lose, (10, 50)) # Pucyem konmuecTBO nponyueHhHblx non cqeToM
-
-# # MeHheM UBeT CdeTJWKa xN3HeEM B 3aBMCMMOCTM OT UX OCTaTKa
-
-# if life == 3:
-# life_color = (0, 150, 0) # 3enenbii ueeT (Bece oTnmuho)
-# if life == 2:
-# life_color = (150, 150, 0) # Kents ueeT (ocTopoxHo)
-# if life == 1:
-# life_color = (150, 0, 0) # Kpachaii uset (octanca onmh uahc)
-
-# # BeiBogum Upy x“3HeEA B NpaBoM BepxHeM yrAy HYXHbIM UBeTOM
-# text_life = font2.render(str(life), 1, life_color)
-# window.blit(text_life, (650, 10))
-
-# display.update() # O6HoBnaem akpah，uTo6b nokaaaTb BCe, YTO Mbl HapHcoBann
-
-# # 6oHyc: aBTOMaTHUeCKMA nepeaanyck Mrpau，ecnw Mbl Npourpann wnw Bbwmrpanm (finish == True)
-# else:
-# finish = False # CHoBa paspeuaeM urpe pa6oTaTb
-# score = 0 # O6nynaem cueT
-# lost = 0 # O6nynaem nponyweHHex
-# num_fire = 0 # 06HynneM cueTUnk BblcTpenoB
-# life = 3 # BoccTaHapnueaem xn3HM
-# # Ounujaem Bce nynm c 3akpaHa
-# for b in bullets:
-# b.kill()
-# # Ounujaem BCex cTapblx MoHcTpoB
-# for m in monsters:
-# m.kill()
-# # Ounujaem Bce cTapble acTepownbl
-# for a in asteroids:
-# a.kill()
-
-# time.delay(3000) # Xnem 3 cekyHab (3000 MummmcekyHhna)，JdTo6b wmrpok ycnen npounTaTe Hannwcb
-# no6eppl/nopaxeHua
-
-# # 3aHoBo co3qaem 5 Bparoe
-
-# for i in range(1, 6):
-# monster = Enemy(img_enemy, randint(80, win_width - 80), -40, 80, 50, randint(1, 5))
-# monsters.add(monster)
-
-# # 3aHoBo co3naeM 2 acTepouna
-
-# for i in range(1, 3):
-# asteroid = Enemy(img_ast, randint(30, win_width - 30), -40, 80, 50, randint(1, 7))
-# asteroids.add(asteroid)
-
-# time.delay(50) # RenaeM ManeHbky naysy (50 munnncekyHa), UTObs urpa He una CAMWKOM 6bcTpo M He neperpyxanaKomnbwTep noijineT no HwxkHhero KpaA akpaHa
-# if self.rect.y > win_height:
-# self.rect.x = randint(80, win_width - 80) # MepeHocum ero Ha HoByto cnyuaijihyo noswuwmo no ropu3zcHTann
-# self.rect.y = 0 # Bo3epauaem ero Ha cawbliji Bepx akpana
-# lost = lost + 1 # Yeenwuneaem cueTuMk nponyweHHXx BparoB Ha 1
 
 # knacc nyan
 class Bullet(GameSprite):
@@ -274,125 +180,125 @@ while run:
                     rel_time = True # BkniouaeM pexum nepesapankn (cTpennTb Henb3A)
 
 # ecm urpa He oKoHYeHa (HMKTO He Bbwrpan HM He npourpan)
-if not finish:
+    if not finish:
 
 # pucyem 中oH HaunHan c neBoro BepxHero yrna (0, 0)
-    window.blit(background, (0,0))
+        window.blit(background, (0,0))
 
-    # gaem komaHay BCeM O6beKTaM npocdwTaTbP CBOM HoBble KOOPAMHaTbI
-    ship.update() # newuraeM kopa6nb，ecnmm HaxaTb KHONKK
-    monsters.update() # newraem Bcex MOHCTpoB BHy3
-    asteroids.update() # nenraeM Bce acTepownbl BHU3
-    bullets.update() # fjsuraem sce nynm BBepx
+        # gaem komaHay BCeM O6beKTaM npocdwTaTbP CBOM HoBble KOOPAMHaTbI
+        ship.update() # newuraeM kopa6nb，ecnmm HaxaTb KHONKK
+        monsters.update() # newraem Bcex MOHCTpoB BHy3
+        asteroids.update() # nenraeM Bce acTepownbl BHU3
+        bullets.update() # fjsuraem sce nynm BBepx
 
-    # pucyem o6bekTb B HX HoBblx KOOpANHaTaX
+        # pucyem o6bekTb B HX HoBblx KOOpANHaTaX
 
-    ship.reset() # Pucyem Kopa6nb
+        ship.reset() # Pucyem Kopa6nb
 
-    monsters.draw(window) # Pucyem Bcex MOHCTpoB wa rpynna Ha okhe
-    asteroids.draw(window) # Pucyem Bce acTepownbl ma rpynne
-    bullets.draw(window) # Pucyem Bce nynm wa rpynnel
+        monsters.draw(window) # Pucyem Bcex MOHCTpoB wa rpynna Ha okhe
+        asteroids.draw(window) # Pucyem Bce acTepownbl ma rpynne
+        bullets.draw(window) # Pucyem Bce nynm wa rpynnel
 
-# noruKa nepezapaaku
-    if rel_time == True: # Ecan Bknodeh pexnm nepezapagkn
-        now_time = timer() # Y3Haem, Kakoe epema ceiuac
+    # noruKa nepezapaaku
+        if rel_time == True: # Ecan Bknodeh pexnm nepezapagkn
+            now_time = timer() # Y3Haem, Kakoe epema ceiuac
 
-        if now_time - last_time < 3: # Ecnw c Hadana nepesapaaKu npouno MEHbUE 3 ceKyHa
+            if now_time - last_time < 3: # Ecnw c Hadana nepesapaaKu npouno MEHbUE 3 ceKyHa
 
 
-            reload = font2.render('Wait, reload...', 1, (150, 0, 0)) # Coagaem TekcT “nonoxknTe，nepe3apRnka”
-            window.blit(reload, (260, 460)) # nioka3blBaeM 3TOT TeKkCT BHW3ay 3kpaha
-        else: # Ecnw 3 cekyHnbl yxe npouno
-            num_fire = 0  # C6pacbleaeM cueTunk nynb Ha 8 (o6olima nonha)
-            rel_time = False # BblknmouaeM pexnm nepesapagku (MOxXHO CHOBa cTpennTb)
+                reload = font2.render('Wait, reload...', 1, (150, 0, 0)) # Coagaem TekcT “nonoxknTe，nepe3apRnka”
+                window.blit(reload, (260, 460)) # nioka3blBaeM 3TOT TeKkCT BHW3ay 3kpaha
+            else: # Ecnw 3 cekyHnbl yxe npouno
+                num_fire = 0  # C6pacbleaeM cueTunk nynb Ha 8 (o6olima nonha)
+                rel_time = False # BblknmouaeM pexnm nepesapagku (MOxXHO CHOBa cTpennTb)
 
-        # npoBepka cTonKHoBeHMit nynb c MoHcTpaMw
-        # (True, True oshauaeT，uTo npw KacaHww ymanuTcA W MOHCTp, Mw nyna)
-            collides = sprite.groupcollide(monsters, bullets, True, True)
-    for c in collides:
-    # 3TOT KOM cpa6aTblBaeT ANA Kaxgoro cO6uToro MOHCTpa
-        score = score + 1 # Jlaem urpoky 1 ouko
-    # Coanaem HoBoro MOHCTpa Ha CaMOM Bepxy，JdTo6b ux Bcerna 6bmo 5 uTyKk
+            # npoBepka cTonKHoBeHMit nynb c MoHcTpaMw
+            # (True, True oshauaeT，uTo npw KacaHww ymanuTcA W MOHCTp, Mw nyna)
+                collides = sprite.groupcollide(monsters, bullets, True, True)
+        for c in collides:
+        # 3TOT KOM cpa6aTblBaeT ANA Kaxgoro cO6uToro MOHCTpa
+            score = score + 1 # Jlaem urpoky 1 ouko
+        # Coanaem HoBoro MOHCTpa Ha CaMOM Bepxy，JdTo6b ux Bcerna 6bmo 5 uTyKk
+            monster = Enemy(img_enemy, randint(80, win_width - 80), -40, 80, 50, randint(1, 5))
+            monsters.add(monster)
+
+    # (3akommentuposanult cTapbii KyCoK Kona, KOTOpEIli paHbue oTeedan 3a MrHOBeHHE npour ps)
+    if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False) or lost >= max_lost:
+        finish = True # npourpanu, cTaBum don u 6onbHe He ynpaennew cnpaiitamn.
+        window.blit(lose, (200, 200))
+
+    # nposepaem, spezanca mm Haw kopa6nb Bo Bpara wnwm acTepown
+    if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False):
+    # Ecnm spezanca, ymanaem Toro MoHcTpa (True B KoHUe)
+        sprite.spritecollide(ship, monsters, True)
+    # Yoanaem TOT acTepoua, B KOTOpbIA BpeZanucb
+        sprite.spritecollide(ship, asteroids, True)
+        life = life -1 # OTHwmaem onHy xn3Hb y Hauero Kopa6na
+
+    # nposepaem ycnogna MPOMFPBILIA
+
+    if life == 0 or lost >= max_lost: # Ecaw 3akoHumnucb xu3HH WI nponycTwunw cnmukow mhoro
+        finish = True # OcTahaenmeaeM urpy (3anpeuaeM newnraTbcH)
+        window.blit(lose, (200, 200)) # Pucyem Hannwmcb YOU LOSE no ueHTpy
+
+    # nposepaem ycnoewe BBIMTPBILIA
+    if score >= goal: # Ecnw Ha6pann HyxHbie ouKn (20)
+        finish = True # OcTaHasnueaem urpy
+        window.blit(win, (200, 200)) # Pucyem Hagnucb YOU WIN no ueHTpy
+
+    # nonroToBKa TekcTa Ana cueTa Ha 3kpaHe
+    text = font2.render("Cuet: "+ str(score), 1, (255, 255, 255))
+    window.blit(text, (10, 20)) # Pucyem cueT B neBoM BepxHem yray
+
+    # nonroToBKa TekcTa ANA nponyuleHHbix Kopabned Ha SKpaHe
+    text_lose = font2.render("Mponyuevo: " + str(lost), 1, (255, 255, 255))
+    window.blit(text_lose, (10, 50)) # Pucyem konmuecTBO nponyueHhHblx non cqeToM
+
+    # MeHheM UBeT CdeTJWKa xN3HeEM B 3aBMCMMOCTM OT UX OCTaTKa
+
+    if life == 3:
+        life_color = (0, 150, 0) # 3enenbii ueeT (Bece oTnmuho)
+    if life == 2:
+        life_color = (150, 150, 0) # Kents ueeT (ocTopoxHo)
+    if life == 1:
+        life_color = (150, 0, 0) # Kpachaii uset (octanca onmh uahc)
+
+    # BeiBogum Upy x“3HeEA B NpaBoM BepxHeM yrAy HYXHbIM UBeTOM
+        text_life = font2.render(str(life), 1, life_color)
+        window.blit(text_life, (650, 10))
+
+        display.update() # O6HoBnaem akpah，uTo6b nokaaaTb BCe, YTO Mbl HapHcoBann
+
+    # 6oHyc: aBTOMaTHUeCKMA nepeaanyck Mrpau，ecnw Mbl Npourpann wnw Bbwmrpanm (finish == True)
+    else:
+        finish = False # CHoBa paspeuaeM urpe pa6oTaTb
+        score = 0 # O6nynaem cueT
+        lost = 0 # O6nynaem nponyweHHex
+        num_fire = 0 # 06HynneM cueTUnk BblcTpenoB
+        life = 3 # BoccTaHapnueaem xn3HM
+    # Ounujaem Bce nynm c 3akpaHa
+    for b in bullets:
+        b.kill()
+    # Ounujaem BCex cTapblx MoHcTpoB
+    for m in monsters:
+        m.kill()
+    # Ounujaem Bce cTapble acTepownbl
+    for a in asteroids:
+        a.kill()
+
+    time.delay(3000) # Xnem 3 cekyHab (3000 MummmcekyHhna)，JdTo6b wmrpok ycnen npounTaTe Hannwcb
+    no6eppl/nopaxeHua
+
+    # 3aHoBo co3qaem 5 Bparoe
+
+    for i in range(1, 6):
         monster = Enemy(img_enemy, randint(80, win_width - 80), -40, 80, 50, randint(1, 5))
         monsters.add(monster)
 
-# (3akommentuposanult cTapbii KyCoK Kona, KOTOpEIli paHbue oTeedan 3a MrHOBeHHE npour ps)
-if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False) or lost >= max_lost:
-    finish = True # npourpanu, cTaBum don u 6onbHe He ynpaennew cnpaiitamn.
-    window.blit(lose, (200, 200))
+    # 3aHoBo co3naeM 2 acTepouna
 
-# nposepaem, spezanca mm Haw kopa6nb Bo Bpara wnwm acTepown
-if sprite.spritecollide(ship, monsters, False) or sprite.spritecollide(ship, asteroids, False):
-# Ecnm spezanca, ymanaem Toro MoHcTpa (True B KoHUe)
-    sprite.spritecollide(ship, monsters, True)
-# Yoanaem TOT acTepoua, B KOTOpbIA BpeZanucb
-    sprite.spritecollide(ship, asteroids, True)
-    life = life -1 # OTHwmaem onHy xn3Hb y Hauero Kopa6na
+    for i in range(1, 3):
+        asteroid = Enemy(img_ast, randint(30, win_width - 30), -40, 80, 50, randint(1, 7))
+        asteroids.add(asteroid)
 
-# nposepaem ycnogna MPOMFPBILIA
-
-if life == 0 or lost >= max_lost: # Ecaw 3akoHumnucb xu3HH WI nponycTwunw cnmukow mhoro
-    finish = True # OcTahaenmeaeM urpy (3anpeuaeM newnraTbcH)
-    window.blit(lose, (200, 200)) # Pucyem Hannwmcb YOU LOSE no ueHTpy
-
-# nposepaem ycnoewe BBIMTPBILIA
-if score >= goal: # Ecnw Ha6pann HyxHbie ouKn (20)
-    finish = True # OcTaHasnueaem urpy
-    window.blit(win, (200, 200)) # Pucyem Hagnucb YOU WIN no ueHTpy
-
-# nonroToBKa TekcTa Ana cueTa Ha 3kpaHe
-text = font2.render("Cuet: "+ str(score), 1, (255, 255, 255))
-window.blit(text, (10, 20)) # Pucyem cueT B neBoM BepxHem yray
-
-# nonroToBKa TekcTa ANA nponyuleHHbix Kopabned Ha SKpaHe
-text_lose = font2.render("Mponyuevo: " + str(lost), 1, (255, 255, 255))
-window.blit(text_lose, (10, 50)) # Pucyem konmuecTBO nponyueHhHblx non cqeToM
-
-# MeHheM UBeT CdeTJWKa xN3HeEM B 3aBMCMMOCTM OT UX OCTaTKa
-
-if life == 3:
-    life_color = (0, 150, 0) # 3enenbii ueeT (Bece oTnmuho)
-if life == 2:
-    life_color = (150, 150, 0) # Kents ueeT (ocTopoxHo)
-if life == 1:
-    life_color = (150, 0, 0) # Kpachaii uset (octanca onmh uahc)
-
-# BeiBogum Upy x“3HeEA B NpaBoM BepxHeM yrAy HYXHbIM UBeTOM
-    text_life = font2.render(str(life), 1, life_color)
-    window.blit(text_life, (650, 10))
-
-    display.update() # O6HoBnaem akpah，uTo6b nokaaaTb BCe, YTO Mbl HapHcoBann
-
-# 6oHyc: aBTOMaTHUeCKMA nepeaanyck Mrpau，ecnw Mbl Npourpann wnw Bbwmrpanm (finish == True)
-else:
-    finish = False # CHoBa paspeuaeM urpe pa6oTaTb
-    score = 0 # O6nynaem cueT
-    lost = 0 # O6nynaem nponyweHHex
-    num_fire = 0 # 06HynneM cueTUnk BblcTpenoB
-    life = 3 # BoccTaHapnueaem xn3HM
-# Ounujaem Bce nynm c 3akpaHa
-for b in bullets:
-    b.kill()
-# Ounujaem BCex cTapblx MoHcTpoB
-for m in monsters:
-    m.kill()
-# Ounujaem Bce cTapble acTepownbl
-for a in asteroids:
-    a.kill()
-
-time.delay(3000) # Xnem 3 cekyHab (3000 MummmcekyHhna)，JdTo6b wmrpok ycnen npounTaTe Hannwcb
-no6eppl/nopaxeHua
-
-# 3aHoBo co3qaem 5 Bparoe
-
-for i in range(1, 6):
-    monster = Enemy(img_enemy, randint(80, win_width - 80), -40, 80, 50, randint(1, 5))
-    monsters.add(monster)
-
-# 3aHoBo co3naeM 2 acTepouna
-
-for i in range(1, 3):
-    asteroid = Enemy(img_ast, randint(30, win_width - 30), -40, 80, 50, randint(1, 7))
-    asteroids.add(asteroid)
-
-time.delay(50) # RenaeM ManeHbky naysy (50 munnncekyHa), UTObs urpa He una CAMWKOM 6bcTpo M He neperpyxanaKomnbwTep
+    time.delay(50) # RenaeM ManeHbky naysy (50 munnncekyHa), UTObs urpa He una CAMWKOM 6bcTpo M He neperpyxanaKomnbwTep
